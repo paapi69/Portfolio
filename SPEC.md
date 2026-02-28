@@ -1,7 +1,7 @@
 # SPEC.md — Sahil Gupta Portfolio Website
 
 ## Mission
-Build a single-page portfolio website for Sahil Gupta, a Senior Product Manager who builds and scales LLM-powered products. The site must feel like a premium, dark, immersive experience — inspired by thibaut.cool — but adapted for a Product Manager's world instead of a 3D artist's. Think: the intersection of tech sophistication and storytelling.
+Build a single-page portfolio website for Sahil Gupta, a Senior Product Manager who builds and scales LLM-powered products. The site must feel like a premium, dark, immersive experience.
 
 ## Tech Stack & Architecture
 
