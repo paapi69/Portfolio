@@ -1,6 +1,7 @@
 "use client";
 
 import ScrollReveal from "./ScrollReveal";
+import CaseStudies from "./CaseStudies";
 
 const aiStackTools = [
   { name: "Claude Code", logo: "https://cdn.simpleicons.org/anthropic/ffffff" },
@@ -11,15 +12,6 @@ const aiStackTools = [
   { name: "Figma",       logo: "https://cdn.simpleicons.org/figma/ffffff" },
   { name: "Notion",      logo: "https://cdn.simpleicons.org/notion/ffffff" },
   { name: "Vercel",      logo: "https://cdn.simpleicons.org/vercel/ffffff" },
-];
-
-const expertiseItems = [
-  "AI & LLM Product Development",
-  "Payments Infrastructure",
-  "Fraud & Risk Management",
-  "Product Strategy",
-  "Platform Architecture",
-  "Global Expansion",
 ];
 
 export default function About() {
@@ -78,32 +70,12 @@ export default function About() {
           </div>
         </ScrollReveal>
 
-        {/* How I work */}
+        {/* Case Studies */}
         <ScrollReveal delay={0.15}>
-          <div className="mt-16">
-            <h3
-              className="mb-6 text-5xl font-bold text-[var(--text-dim)] sm:text-6xl md:text-8xl"
-              style={{ fontFamily: "var(--font-display)" }}
-            >
-              How I Work
-            </h3>
-            <ul
-              className="space-y-3 text-[var(--text-secondary)]"
-              style={{ fontFamily: "var(--font-body)" }}
-            >
-              <li>&#8594; Start with user research and problem validation</li>
-              <li>&#8594; Run lean experiments to de-risk roadmap bets</li>
-              <li>
-                &#8594; Push for clarity on the &quot;why&quot; before building
-              </li>
-              <li>
-                &#8594; Use data and qualitative insight to guide trade-offs
-              </li>
-            </ul>
-          </div>
+          <CaseStudies />
         </ScrollReveal>
 
-        {/* AI Stack — horizontal icon+text cards, 2-col mobile / 4-col desktop */}
+        {/* AI Stack */}
         <ScrollReveal delay={0.15}>
           <div className="mt-16">
             <h3
@@ -131,33 +103,6 @@ export default function About() {
                     style={{ fontFamily: "var(--font-body)" }}
                   >
                     {tool.name}
-                  </span>
-                </div>
-              ))}
-            </div>
-          </div>
-        </ScrollReveal>
-
-        {/* Core Expertise — vertical list */}
-        <ScrollReveal delay={0.15}>
-          <div className="mt-16">
-            <h3
-              className="mb-6 text-5xl font-bold text-[var(--text-dim)] sm:text-6xl md:text-8xl"
-              style={{ fontFamily: "var(--font-display)" }}
-            >
-              Core Expertise
-            </h3>
-            <div className="max-w-lg">
-              {expertiseItems.map((item) => (
-                <div
-                  key={item}
-                  className="border-b border-[var(--border)] py-4"
-                >
-                  <span
-                    className="text-base text-[var(--text-secondary)] sm:text-lg"
-                    style={{ fontFamily: "var(--font-body)" }}
-                  >
-                    {item}
                   </span>
                 </div>
               ))}
