@@ -34,7 +34,7 @@ const BASE: CaseStudyItem[] = [
 ];
 
 const SLOTS = [-2, -1, 0, 1, 2];
-const THROTTLE_MS = 500;
+const WHEEL_THRESHOLD = 80; // px of accumulated scroll before advancing
 
 type SlotKey = -2 | -1 | 0 | 1 | 2;
 const SLOT_STYLE: Record<SlotKey, { scale: number; opacity: number; showDetail: boolean }> = {
@@ -47,21 +47,42 @@ const SLOT_STYLE: Record<SlotKey, { scale: number; opacity: number; showDetail: 
 
 export default function CaseStudies() {
   const [activeIndex, setActiveIndex] = useState(0);
+  const [slotSpacing, setSlotSpacing] = useState(44); // vw
   const containerRef = useRef<HTMLDivElement>(null);
-  const lastWheel = useRef(0);
+  const wheelAccum = useRef(0);
+  const wheelTimer = useRef<ReturnType<typeof setTimeout> | undefined>(undefined);
   const touchStart = useRef(0);
 
-  // Wheel → advance by ±1, throttled
+  // Responsive slot spacing — push side items off-screen on mobile
+  useEffect(() => {
+    const update = () => setSlotSpacing(window.innerWidth < 640 ? 110 : 44);
+    update();
+    window.addEventListener("resize", update);
+    return () => window.removeEventListener("resize", update);
+  }, []);
+
+  // Wheel → accumulate delta, advance when threshold reached
   useEffect(() => {
     const el = containerRef.current;
     if (!el) return;
 
     const onWheel = (e: WheelEvent) => {
       e.preventDefault();
-      const now = Date.now();
-      if (now - lastWheel.current < THROTTLE_MS) return;
-      lastWheel.current = now;
-      setActiveIndex((i) => i + (e.deltaY > 0 ? 1 : -1));
+      wheelAccum.current += e.deltaY;
+
+      // Reset accumulator on inactivity
+      clearTimeout(wheelTimer.current);
+      wheelTimer.current = setTimeout(() => {
+        wheelAccum.current = 0;
+      }, 300);
+
+      if (wheelAccum.current >= WHEEL_THRESHOLD) {
+        wheelAccum.current = 0;
+        setActiveIndex((i) => i + 1);
+      } else if (wheelAccum.current <= -WHEEL_THRESHOLD) {
+        wheelAccum.current = 0;
+        setActiveIndex((i) => i - 1);
+      }
     };
 
     el.addEventListener("wheel", onWheel, { passive: false });
@@ -105,7 +126,7 @@ export default function CaseStudies() {
             ((activeIndex + offset) % BASE.length + BASE.length) % BASE.length;
           const item = BASE[itemIndex];
           const { scale, opacity, showDetail } = SLOT_STYLE[slotKey];
-          const xVw = offset * 44;
+          const xVw = offset * slotSpacing;
 
           return (
             <motion.div
