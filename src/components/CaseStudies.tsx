@@ -1,7 +1,7 @@
 "use client";
 
 import { useRef, useState, useEffect } from "react";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 
 interface CaseStudyItem {
   id: string;
@@ -33,8 +33,7 @@ const BASE: CaseStudyItem[] = [
   },
 ];
 
-const SLOTS = [-2, -1, 0, 1, 2];
-const WHEEL_THRESHOLD = 80; // px of accumulated scroll before advancing
+const WHEEL_THRESHOLD = 80;
 
 type SlotKey = -2 | -1 | 0 | 1 | 2;
 const SLOT_STYLE: Record<SlotKey, { scale: number; opacity: number; showDetail: boolean }> = {
@@ -47,7 +46,7 @@ const SLOT_STYLE: Record<SlotKey, { scale: number; opacity: number; showDetail: 
 
 export default function CaseStudies() {
   const [activeIndex, setActiveIndex] = useState(0);
-  const [slotSpacing, setSlotSpacing] = useState(44); // vw
+  const [slotSpacing, setSlotSpacing] = useState(44);
   const containerRef = useRef<HTMLDivElement>(null);
   const wheelAccum = useRef(0);
   const wheelTimer = useRef<ReturnType<typeof setTimeout> | undefined>(undefined);
@@ -70,7 +69,6 @@ export default function CaseStudies() {
       e.preventDefault();
       wheelAccum.current += e.deltaY;
 
-      // Reset accumulator on inactivity
       clearTimeout(wheelTimer.current);
       wheelTimer.current = setTimeout(() => {
         wheelAccum.current = 0;
@@ -89,7 +87,7 @@ export default function CaseStudies() {
     return () => el.removeEventListener("wheel", onWheel);
   }, []);
 
-  // Touch swipe → same on mobile
+  // Touch swipe
   const onTouchStart = (e: React.TouchEvent) => {
     touchStart.current = e.touches[0].clientX;
   };
@@ -116,65 +114,73 @@ export default function CaseStudies() {
       <div
         ref={containerRef}
         data-lenis-prevent
-        className="relative flex h-72 items-center justify-center overflow-hidden sm:h-80"
+        className="relative flex h-72 cursor-grab items-center justify-center overflow-hidden active:cursor-grabbing sm:h-80"
         onTouchStart={onTouchStart}
         onTouchEnd={onTouchEnd}
       >
-        {SLOTS.map((offset) => {
-          const slotKey = offset as SlotKey;
-          const itemIndex =
-            ((activeIndex + offset) % BASE.length + BASE.length) % BASE.length;
-          const item = BASE[itemIndex];
-          const { scale, opacity, showDetail } = SLOT_STYLE[slotKey];
-          const xVw = offset * slotSpacing;
+        <AnimatePresence initial={false}>
+          {[-2, -1, 0, 1, 2].map((offset) => {
+            const virtualIdx = activeIndex + offset;
+            const itemIndex =
+              ((virtualIdx % BASE.length) + BASE.length) % BASE.length;
+            const item = BASE[itemIndex];
+            const slotKey = offset as SlotKey;
+            const { scale, opacity, showDetail } = SLOT_STYLE[slotKey];
+            const xVw = offset * slotSpacing;
+            // Entering items start one slot further out (off-screen)
+            const initialXVw =
+              (offset + (offset >= 0 ? 1 : -1)) * slotSpacing;
 
-          return (
-            <motion.div
-              key={`slot-${offset}`}
-              className="absolute flex flex-col items-center text-center"
-              style={{ width: "min(440px, 85vw)" }}
-              animate={{ x: `${xVw}vw`, scale, opacity }}
-              transition={{ type: "spring", stiffness: 260, damping: 28 }}
-            >
-              {/* Eyebrow */}
-              <p
-                className="mb-2 text-[10px] uppercase tracking-widest sm:text-xs"
-                style={{ color: item.accent, fontFamily: "var(--font-mono)" }}
+            return (
+              <motion.div
+                key={virtualIdx}
+                initial={{ x: `${initialXVw}vw`, scale: 0.2, opacity: 0 }}
+                animate={{ x: `${xVw}vw`, scale, opacity }}
+                exit={{ scale: 0.2, opacity: 0 }}
+                transition={{ type: "spring", stiffness: 260, damping: 28 }}
+                className="absolute flex flex-col items-center text-center"
+                style={{ width: "min(440px, 85vw)" }}
               >
-                {item.eyebrow}
-              </p>
+                {/* Eyebrow */}
+                <p
+                  className="mb-2 text-[10px] uppercase tracking-widest sm:text-xs"
+                  style={{ color: item.accent, fontFamily: "var(--font-mono)" }}
+                >
+                  {item.eyebrow}
+                </p>
 
-              {/* Title */}
-              <h4
-                className="mb-3 text-2xl font-bold leading-tight text-[var(--text-primary)] sm:text-3xl md:text-4xl"
-                style={{ fontFamily: "var(--font-display)" }}
-              >
-                {item.title}
-              </h4>
+                {/* Title */}
+                <h4
+                  className="mb-3 text-2xl font-bold leading-tight text-[var(--text-primary)] sm:text-3xl md:text-4xl"
+                  style={{ fontFamily: "var(--font-display)" }}
+                >
+                  {item.title}
+                </h4>
 
-              {/* Description + CTA — center only */}
-              {showDetail && (
-                <>
-                  <p
-                    className="mb-5 max-w-sm text-sm leading-relaxed text-[var(--text-secondary)] sm:text-base"
-                    style={{ fontFamily: "var(--font-body)" }}
-                  >
-                    {item.description}
-                  </p>
-                  <a
-                    href={item.href}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-sm font-semibold transition-all duration-200 hover:underline"
-                    style={{ color: item.accent, fontFamily: "var(--font-body)" }}
-                  >
-                    View case study →
-                  </a>
-                </>
-              )}
-            </motion.div>
-          );
-        })}
+                {/* Description + CTA — center only */}
+                {showDetail && (
+                  <>
+                    <p
+                      className="mb-5 max-w-sm text-sm leading-relaxed text-[var(--text-secondary)] sm:text-base"
+                      style={{ fontFamily: "var(--font-body)" }}
+                    >
+                      {item.description}
+                    </p>
+                    <a
+                      href={item.href}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-sm font-semibold transition-all duration-200 hover:underline"
+                      style={{ color: item.accent, fontFamily: "var(--font-body)" }}
+                    >
+                      View case study →
+                    </a>
+                  </>
+                )}
+              </motion.div>
+            );
+          })}
+        </AnimatePresence>
       </div>
 
       {/* Dot indicators */}
