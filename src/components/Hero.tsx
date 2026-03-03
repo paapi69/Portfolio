@@ -151,7 +151,7 @@ export default function Hero() {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ duration: 0.5, delay: 0.2, ease }}
-              className="order-first md:order-none md:col-span-2 md:row-span-2 md:flex md:items-center md:justify-end"
+              className="order-first flex flex-1 items-center justify-center md:order-none md:col-span-2 md:row-span-2 md:flex md:flex-none md:items-center md:justify-end"
             >
               <ProfilePhoto />
             </motion.div>

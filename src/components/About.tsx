@@ -82,7 +82,7 @@ export default function About() {
               className="mb-8 text-5xl font-bold text-[var(--text-dim)] sm:text-6xl md:text-8xl"
               style={{ fontFamily: "var(--font-display)" }}
             >
-              My AI Stack
+              AI Stack
             </h3>
             <div className="grid grid-cols-2 gap-3 md:grid-cols-4">
               {aiStackTools.map((tool) => (

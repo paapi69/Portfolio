@@ -136,47 +136,55 @@ export default function CaseStudies() {
                 key={virtualIdx}
                 initial={{ x: `${initialXVw}vw`, scale: 0.2, opacity: 0 }}
                 animate={{ x: `${xVw}vw`, scale, opacity }}
-                exit={{ scale: 0.2, opacity: 0 }}
-                transition={{ type: "spring", stiffness: 260, damping: 28 }}
+                exit={{ scale: 0.2, opacity: 0, transition: { duration: 0.4, ease: "easeIn" } }}
+                transition={{ type: "spring", stiffness: 60, damping: 20 }}
                 className="absolute flex flex-col items-center text-center"
                 style={{ width: "min(440px, 85vw)" }}
               >
-                {/* Eyebrow */}
-                <p
-                  className="mb-2 text-[10px] uppercase tracking-widest sm:text-xs"
-                  style={{ color: item.accent, fontFamily: "var(--font-mono)" }}
+                <a
+                  href={item.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex flex-col items-center text-center"
+                  style={{ pointerEvents: showDetail ? "auto" : "none" }}
+                  tabIndex={showDetail ? 0 : -1}
                 >
-                  {item.eyebrow}
-                </p>
+                  {/* Eyebrow */}
+                  <p
+                    className="mb-2 text-[10px] uppercase tracking-widest sm:text-xs"
+                    style={{ color: item.accent, fontFamily: "var(--font-mono)" }}
+                  >
+                    {item.eyebrow}
+                  </p>
 
-                {/* Title */}
-                <h4
-                  className="mb-3 text-2xl font-bold leading-tight text-[var(--text-primary)] sm:text-3xl md:text-4xl"
-                  style={{ fontFamily: "var(--font-display)" }}
-                >
-                  {item.title}
-                </h4>
+                  {/* Title */}
+                  <h4
+                    className="mb-3 text-2xl font-bold leading-tight text-[var(--text-primary)] sm:text-3xl md:text-4xl"
+                    style={{ fontFamily: "var(--font-display)" }}
+                  >
+                    {item.title}
+                  </h4>
 
-                {/* Description + CTA — center only */}
-                {showDetail && (
-                  <>
+                  {/* Description + CTA — fade in/out */}
+                  <motion.div
+                    initial={false}
+                    animate={{ opacity: showDetail ? 1 : 0, y: showDetail ? 0 : 8 }}
+                    transition={{ duration: 0.4, ease: "easeOut" }}
+                  >
                     <p
                       className="mb-5 max-w-sm text-sm leading-relaxed text-[var(--text-secondary)] sm:text-base"
                       style={{ fontFamily: "var(--font-body)" }}
                     >
                       {item.description}
                     </p>
-                    <a
-                      href={item.href}
-                      target="_blank"
-                      rel="noopener noreferrer"
+                    <span
                       className="text-sm font-semibold transition-all duration-200 hover:underline"
                       style={{ color: item.accent, fontFamily: "var(--font-body)" }}
                     >
                       View case study →
-                    </a>
-                  </>
-                )}
+                    </span>
+                  </motion.div>
+                </a>
               </motion.div>
             );
           })}
