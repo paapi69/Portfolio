@@ -14,7 +14,6 @@ const projects = [
     metrics: [
       { value: "$20M", label: "ARR from $0" },
       { value: "6", label: "Global Markets" },
-      { value: "500K+", label: "Automated Uploads" },
       { value: "60%", label: "LLM Cost Reduction" },
     ],
     tags: ["GPT-4 Vision", "RAG", "LLM Optimization", "A/B Testing", "Mixpanel"],

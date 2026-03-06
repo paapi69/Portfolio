@@ -38,26 +38,6 @@ export default function Contact() {
         </ScrollReveal>
 
         <ScrollReveal delay={0.1}>
-          <p
-            className="mt-12 max-w-2xl text-xl font-medium leading-snug text-[var(--text-primary)] sm:text-2xl md:text-3xl"
-            style={{ fontFamily: "var(--font-body)" }}
-          >
-            Open to Senior PM / Lead PM roles in AI, GenAI, fintech, and SaaS.
-            Let&apos;s build something.
-          </p>
-        </ScrollReveal>
-
-        <ScrollReveal delay={0.15}>
-          <p
-            className="mt-4 max-w-2xl text-base text-[var(--text-secondary)]"
-            style={{ fontFamily: "var(--font-body)", lineHeight: 1.7 }}
-          >
-            Open to India, UK, and UAE (visa sponsorship welcome). Best way to
-            reach me: email.
-          </p>
-        </ScrollReveal>
-
-        <ScrollReveal delay={0.2}>
           <div className="mt-12 max-w-lg">
             {contactLinks.map((link) => (
               <a

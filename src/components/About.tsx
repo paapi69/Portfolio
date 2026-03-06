@@ -18,7 +18,7 @@ export default function About() {
   return (
     <section
       id="about"
-      className="px-6 py-16 sm:px-8 sm:py-24 md:px-16 lg:px-24"
+      className="px-6 pt-8 pb-16 sm:px-8 sm:pt-12 sm:pb-24 md:px-16 lg:px-24"
     >
       <div className="mx-auto max-w-7xl">
         <ScrollReveal>

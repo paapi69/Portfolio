@@ -121,7 +121,7 @@ export default function Hero() {
       style={{ background: "var(--hero-bg)", color: "var(--hero-text)" }}
     >
       {/* Hero nav */}
-      <div className="px-6 pt-8 sm:px-8 lg:px-12">
+      <div className="px-6 pt-8 pb-6 sm:px-8 lg:px-12">
         <HeroNav />
       </div>
 
