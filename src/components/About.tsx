@@ -2,6 +2,7 @@
 
 import ScrollReveal from "./ScrollReveal";
 import CaseStudies from "./CaseStudies";
+import { DottedSurface } from "./ui/dotted-surface";
 
 const aiStackTools = [
   { name: "Claude Code", logo: "https://cdn.simpleicons.org/anthropic/ffffff" },
@@ -84,14 +85,15 @@ export default function About() {
 
         {/* AI Stack */}
         <ScrollReveal delay={0.15}>
-          <div className="mt-16">
+          <div className="relative mt-16 overflow-hidden rounded-2xl px-8 py-10">
+            <DottedSurface className="opacity-70" />
             <h3
-              className="mb-8 text-5xl font-bold text-[var(--text-dim)] sm:text-6xl md:text-8xl"
+              className="relative z-10 mb-8 text-5xl font-bold text-[var(--text-dim)] sm:text-6xl md:text-8xl"
               style={{ fontFamily: "var(--font-display)" }}
             >
               AI Stack
             </h3>
-            <div className="grid grid-cols-2 gap-3 md:grid-cols-4">
+            <div className="relative z-10 grid grid-cols-2 gap-3 md:grid-cols-4">
               {aiStackTools.map((tool) => (
                 <div
                   key={tool.name}

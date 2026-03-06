@@ -34,7 +34,7 @@ export default function Footer() {
           className="mt-6 text-center text-xs text-[var(--text-dim)]"
           style={{ fontFamily: "var(--font-mono)" }}
         >
-          Thought and Crafted by Sahil Gupta. Engineered with Claude Code.
+          Thought and Crafted by me. Engineered with Claude Code.
         </p>
       </div>
     </footer>
