@@ -10,8 +10,8 @@ const contactLinks = [
   },
   {
     label: "LinkedIn",
-    href: "https://linkedin.com/in/sahilgupta-41a3b6113",
-    display: "linkedin.com/in/sahilgupta",
+    href: "https://www.linkedin.com/in/sahil-gupta-41a3b6113/",
+    display: "linkedin.com/in/sahil-gupta",
     external: true,
   },
   {

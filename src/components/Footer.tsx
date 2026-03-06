@@ -19,7 +19,7 @@ export default function Footer() {
               email
             </a>
             <a
-              href="https://linkedin.com/in/sahilgupta-41a3b6113"
+              href="https://www.linkedin.com/in/sahil-gupta-41a3b6113/"
               target="_blank"
               rel="noopener noreferrer"
               data-hoverable

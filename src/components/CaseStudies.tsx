@@ -127,9 +127,7 @@ export default function CaseStudies() {
             const slotKey = offset as SlotKey;
             const { scale, opacity, showDetail } = SLOT_STYLE[slotKey];
             const xVw = offset * slotSpacing;
-            // Entering items start one slot further out (off-screen)
-            const initialXVw =
-              (offset + (offset >= 0 ? 1 : -1)) * slotSpacing;
+            const initialXVw = (offset + (offset >= 0 ? 1 : -1)) * slotSpacing;
 
             return (
               <motion.div
