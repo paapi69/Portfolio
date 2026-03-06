@@ -85,7 +85,7 @@ export default function About() {
 
         {/* AI Stack */}
         <ScrollReveal delay={0.15}>
-          <div className="relative mt-16 overflow-hidden rounded-2xl px-8 py-10">
+          <div className="relative mt-16 overflow-hidden rounded-2xl">
             <DottedSurface className="opacity-70" />
             <h3
               className="relative z-10 mb-8 text-5xl font-bold text-[var(--text-dim)] sm:text-6xl md:text-8xl"
