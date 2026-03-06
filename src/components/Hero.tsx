@@ -167,9 +167,9 @@ export default function Hero() {
                 className="text-base leading-relaxed sm:text-lg md:text-xl"
                 style={{ fontFamily: "var(--font-body)" }}
               >
-                I don&apos;t build products and then find users for them. I find
-                the problems first, then build. 10+ years scaling AI-native and
-                fintech platforms to $20M+ ARR across six global markets.
+                A 90&apos;s internet surfer with a passion within the intersection
+                of technology and business. I don&apos;t build products and then
+                find users for them. I find the problems first, then build.
               </p>
             </motion.div>
 
@@ -184,10 +184,13 @@ export default function Hero() {
                 className="text-sm leading-relaxed opacity-60 sm:text-base"
                 style={{ fontFamily: "var(--font-body)" }}
               >
-                Senior Product Manager specializing in LLM-powered products,
-                payments infrastructure, and platform architecture. 2x Founder.
-                Open to Senior PM / Lead PM roles in AI, GenAI, fintech, and
-                SaaS.
+                A product manager with a founder&apos;s brain. I&apos;ve spent
+                the past 10+ years working across AI, fintech, and no-code
+                platforms. Building things from scratch, scaling them across
+                markets, and learning what works by first figuring out what
+                doesn&apos;t. Currently exploring what&apos;s next, tinkering
+                with multi-agent systems, and building things on the side just
+                to see if they work.
               </p>
             </motion.div>
           </div>

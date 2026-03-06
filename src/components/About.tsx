@@ -36,8 +36,8 @@ export default function About() {
             className="mt-12 max-w-3xl text-xl font-medium leading-snug text-[var(--text-primary)] sm:text-2xl md:text-3xl lg:text-4xl"
             style={{ fontFamily: "var(--font-body)" }}
           >
-            I don&apos;t build products and then find users for them. I find the
-            problems first, then build.
+            I&apos;ve had a bit of an unconventional path into product
+            management, and I think that&apos;s what makes it work.
           </p>
         </ScrollReveal>
 
@@ -48,24 +48,31 @@ export default function About() {
             style={{ fontFamily: "var(--font-body)", lineHeight: 1.7 }}
           >
             <p>
-              That instinct began as a founder, building two businesses to
-              $1.2M+ revenue without a playbook. Every decision had to be
-              validated, every feature earned. I became a Senior Product Manager,
-              but I never stopped thinking like a founder.
+              I started as a founder. Spent seven years building two businesses
+              from scratch without much of a playbook. An artist marketplace and
+              a travel platform, both bootstrapped, both profitable, neither
+              world-changing. But those years gave me something most PM roles
+              don&apos;t: the instinct to question whether something should be
+              built at all before figuring out how to build it.
             </p>
+
+            {/* Pull-quote */}
+            <blockquote
+              className="border-l-2 border-[var(--accent)] pl-6 text-lg italic text-[var(--text-primary)] sm:text-xl"
+              style={{ fontFamily: "var(--font-display)" }}
+            >
+              &ldquo;I went from building my own products to helping others build
+              theirs, and the founder lens never really went away.&rdquo;
+            </blockquote>
+
             <p>
-              Over the past 10+ years, I&apos;ve defined product strategy and
-              scaled AI-native and fintech platforms to $20M+ ARR across six
-              global markets. I&apos;ve shipped production-grade Generative AI
-              and LLM-powered systems that drove 2.1x traffic growth, $2M+
-              incremental revenue, and 60% cost reduction through
-              evaluation-driven model optimization.
-            </p>
-            <p>
-              On the fintech side, I&apos;ve launched digital payments platforms
-              to $1M+ monthly transaction volume within 25 days, integrated
-              directly with banks and payment processors, owned RBI compliance,
-              and designed fraud detection and risk frameworks from scratch.
+              From there I moved into product management across fintech and AI.
+              At Fyp, I built payments and fraud systems for a neo-bank from
+              zero. At FamPay, I helped crack the growth equation for teen
+              fintech. At Builder.ai, I led the Studio Store vertical, a no-code
+              platform for SMBs, and shipped generative AI systems across six
+              markets. Learned a lot about what it takes to make LLMs work in
+              production, not just in demos.
             </p>
           </div>
         </ScrollReveal>
