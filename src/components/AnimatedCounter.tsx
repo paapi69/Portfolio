@@ -6,6 +6,7 @@ import { useInView, motion } from "framer-motion";
 interface AnimatedCounterProps {
   value: string; // e.g. "$20M", "100K", "45%", "$150K+"
   label: string;
+  sublabel?: string;
 }
 
 function parseValue(raw: string): {
@@ -28,7 +29,7 @@ function parseValue(raw: string): {
   return { prefix, number, suffix };
 }
 
-export default function AnimatedCounter({ value, label }: AnimatedCounterProps) {
+export default function AnimatedCounter({ value, label, sublabel }: AnimatedCounterProps) {
   const ref = useRef<HTMLDivElement>(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
   const [displayNumber, setDisplayNumber] = useState(0);
@@ -80,6 +81,14 @@ export default function AnimatedCounter({ value, label }: AnimatedCounterProps) 
       >
         {label}
       </p>
+      {sublabel && (
+        <p
+          className="mt-1 text-[10px] text-[var(--text-dim)]"
+          style={{ fontFamily: "var(--font-mono)" }}
+        >
+          {sublabel}
+        </p>
+      )}
     </div>
   );
 }

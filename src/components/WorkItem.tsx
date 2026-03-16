@@ -7,6 +7,7 @@ import AnimatedCounter from "./AnimatedCounter";
 interface Metric {
   value: string;
   label: string;
+  sublabel?: string;
 }
 
 interface SubProject {
@@ -132,6 +133,7 @@ export default function WorkItem({
                     key={m.label}
                     value={m.value}
                     label={m.label}
+                    sublabel={m.sublabel}
                   />
                 ))}
               </div>

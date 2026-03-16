@@ -7,7 +7,7 @@ import { GlowCard } from "./ui/glow-card";
 
 const aiStackTools = [
   { name: "Claude Code", logo: "https://cdn.simpleicons.org/anthropic/ffffff" },
-  { name: "Anti-gravity", logo: "/antigravity.svg" },
+  { name: "Antigravity", logo: "/antigravity.svg" },
   { name: "Cursor",      logo: "https://www.cursor.com/favicon.ico" },
   { name: "Linear",      logo: "https://cdn.simpleicons.org/linear/ffffff" },
   { name: "Jira",        logo: "https://cdn.simpleicons.org/jira/ffffff" },
@@ -20,7 +20,7 @@ export default function About() {
   return (
     <section
       id="about"
-      className="px-6 pt-8 pb-16 sm:px-8 sm:pt-12 sm:pb-24 md:px-16 lg:px-24"
+      className="px-6 pt-8 pb-8 sm:px-8 sm:pt-12 sm:pb-12 md:px-16 lg:px-24"
     >
       <div className="mx-auto max-w-7xl">
         <ScrollReveal>
