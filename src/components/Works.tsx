@@ -10,15 +10,18 @@ const projects = [
     period: "Mar 2022 – Jun 2025",
     companyType: "Series D, $450M+ raised",
     oneLiner:
-      "Led the AI/LLM product portfolio for Builder.ai's No-Code platform, scaling production-grade GenAI systems to $20M ARR across 6 global markets.",
+      "Led the product portfolio for Builder.ai's No-Code platform, scaling production-grade GenAI systems that helped achieve $20M ARR across 6 global markets.",
     metrics: [
       { value: "$20M", label: "ARR from $0" },
       { value: "6", label: "Global Markets" },
       { value: "60%", label: "LLM Cost Reduction" },
     ],
     tags: ["GPT-4 Vision", "RAG", "LLM Optimization", "A/B Testing", "Mixpanel"],
-    highlight:
-      '"Magic Upload" — agentic multimodal AI pipeline: 500K uploads at 94% accuracy. RAG-based SEO system driving 2.1x organic traffic.',
+    highlights: [
+      "Built and scaled Magic Upload, an AI-powered inventory engine, from 0 to 500K automated uploads at 94% accuracy to eliminate the manual inventory creation bottleneck merchants faced, cutting listing time by 80%.",
+      "Launched a RAG-based SEO engine to solve low organic discoverability across 6 markets, growing traffic 2.1x.",
+      "Designed an LLM eval framework to fix unpredictable model quality and runaway API costs, cutting spend by 60% while lifting accuracy to 92%.",
+    ],
   },
   {
     name: "Fyp — Neo Banking Platform",

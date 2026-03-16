@@ -22,7 +22,7 @@ interface Project {
   oneLiner: string;
   metrics: Metric[];
   tags: string[];
-  highlight?: string;
+  highlights?: string[];
   isFounderCard?: boolean;
   subProjects?: SubProject[];
 }
@@ -136,28 +136,6 @@ export default function WorkItem({
                 ))}
               </div>
 
-              {/* Highlight */}
-              {project.highlight && (
-                <p
-                  className="mt-6 text-sm text-[var(--accent)]"
-                  style={{ fontFamily: "var(--font-mono)" }}
-                >
-                  &#9733; {project.highlight}
-                </p>
-              )}
-
-              {/* Tags */}
-              <div className="mt-4 flex flex-wrap gap-2">
-                {project.tags.map((tag) => (
-                  <span
-                    key={tag}
-                    className="rounded-full border border-[var(--border)] px-3 py-1 text-xs text-[var(--text-secondary)]"
-                    style={{ fontFamily: "var(--font-mono)" }}
-                  >
-                    {tag}
-                  </span>
-                ))}
-              </div>
             </div>
           </motion.div>
         )}

@@ -3,10 +3,11 @@
 import ScrollReveal from "./ScrollReveal";
 import CaseStudies from "./CaseStudies";
 import { DottedSurface } from "./ui/dotted-surface";
+import { GlowCard } from "./ui/glow-card";
 
 const aiStackTools = [
   { name: "Claude Code", logo: "https://cdn.simpleicons.org/anthropic/ffffff" },
-  { name: "Gemini",      logo: "https://cdn.simpleicons.org/googlegemini/ffffff" },
+  { name: "Anti-gravity", logo: "/antigravity.svg" },
   { name: "Cursor",      logo: "https://www.cursor.com/favicon.ico" },
   { name: "Linear",      logo: "https://cdn.simpleicons.org/linear/ffffff" },
   { name: "Jira",        logo: "https://cdn.simpleicons.org/jira/ffffff" },
@@ -85,8 +86,8 @@ export default function About() {
 
         {/* AI Stack */}
         <ScrollReveal delay={0.15}>
-          <div className="relative mt-16 overflow-hidden rounded-2xl">
-            <DottedSurface className="opacity-70" />
+          <div className="relative mt-16 overflow-hidden rounded-2xl pb-10">
+            <DottedSurface dotColor={[255, 255, 255]} dotSize={0.09} />
             <h3
               className="relative z-10 mb-8 text-5xl font-bold text-[var(--text-dim)] sm:text-6xl md:text-8xl"
               style={{ fontFamily: "var(--font-display)" }}
@@ -95,9 +96,9 @@ export default function About() {
             </h3>
             <div className="relative z-10 grid grid-cols-2 gap-3 md:grid-cols-4">
               {aiStackTools.map((tool) => (
-                <div
+                <GlowCard
                   key={tool.name}
-                  className="flex items-center gap-4 rounded-xl border border-[var(--border)] bg-[var(--bg-secondary)] px-5 py-4 transition-all duration-200 hover:scale-[1.02] hover:border-[var(--accent)]/30 hover:bg-[var(--bg-elevated)]"
+                  className="flex items-center gap-4 rounded-xl border border-[var(--border)] bg-[var(--bg-secondary)] px-5 py-4 transition-all duration-200 hover:scale-[1.02] hover:border-transparent hover:bg-[var(--bg-elevated)]"
                 >
                   <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-[var(--bg-elevated)]">
                     {/* eslint-disable-next-line @next/next/no-img-element */}
@@ -113,7 +114,7 @@ export default function About() {
                   >
                     {tool.name}
                   </span>
-                </div>
+                </GlowCard>
               ))}
             </div>
           </div>

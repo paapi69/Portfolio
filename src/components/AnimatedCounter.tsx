@@ -48,7 +48,7 @@ export default function AnimatedCounter({ value, label }: AnimatedCounterProps) 
       const eased = 1 - Math.pow(1 - progress, 3);
       const current = eased * number;
 
-      setDisplayNumber(isFloat ? parseFloat(current.toFixed(1)) : Math.floor(current));
+      setDisplayNumber(isFloat ? parseFloat(current.toFixed(1)) : Math.round(current));
 
       if (progress < 1) {
         requestAnimationFrame(animate);
@@ -61,7 +61,7 @@ export default function AnimatedCounter({ value, label }: AnimatedCounterProps) 
   }, [isInView, number]);
 
   return (
-    <div ref={ref} className="text-center">
+    <div ref={ref} className="text-left">
       <motion.div
         initial={{ opacity: 0, y: 10 }}
         whileInView={{ opacity: 1, y: 0 }}
