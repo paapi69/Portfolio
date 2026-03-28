@@ -12,7 +12,7 @@ const aiStackTools = [
   { name: "Linear",      logo: "https://cdn.simpleicons.org/linear/ffffff" },
   { name: "Jira",        logo: "https://cdn.simpleicons.org/jira/ffffff" },
   { name: "Figma",       logo: "https://cdn.simpleicons.org/figma/ffffff" },
-  { name: "Notion",      logo: "https://cdn.simpleicons.org/notion/ffffff" },
+  { name: "Arize",       logo: "https://arize.com/favicon.ico", filter: "brightness(0) invert(1)" },
   { name: "Vercel",      logo: "https://cdn.simpleicons.org/vercel/ffffff" },
 ];
 
@@ -106,6 +106,7 @@ export default function About() {
                       src={tool.logo}
                       alt={tool.name}
                       className="h-6 w-6 object-contain"
+                      style={"filter" in tool ? { filter: tool.filter } : undefined}
                     />
                   </div>
                   <span
