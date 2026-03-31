@@ -31,6 +31,15 @@ const BASE: CaseStudyItem[] = [
     href: "https://gamma.app/docs/Magic-Upload-4s3sh72jde8nwj2",
     accent: "#a78bfa",
   },
+  {
+    id: "fraud-risk-engine",
+    eyebrow: "Risk · Fintech",
+    title: "Behavioral Fraud Detection System",
+    description:
+      "Built a 15+ signal behavioral risk scoring system that reduced fraud by 45%.",
+    href: "https://gamma.app/docs/Fraud-Risk-Management-Engine-4y6hf6a2ygyfmun",
+    accent: "#f87171",
+  },
 ];
 
 const WHEEL_THRESHOLD = 80;
