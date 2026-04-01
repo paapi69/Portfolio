@@ -2,15 +2,7 @@
 
 import { useRef, useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-
-interface CaseStudyItem {
-  id: string;
-  eyebrow: string;
-  title: string;
-  description: string;
-  href: string;
-  accent: string;
-}
+import { CaseStudyCard, type CaseStudyItem } from "@/components/ui/case-study-card";
 
 const BASE: CaseStudyItem[] = [
   {
@@ -21,6 +13,7 @@ const BASE: CaseStudyItem[] = [
       "RAG-based multimodal pipeline that drove 2.1× organic traffic growth and $2M+ incremental revenue across 6 global markets.",
     href: "https://gamma.app/docs/Generative-AI-SEO-Engine-6yqlz59djd9kmwo",
     accent: "#00e5a0",
+    image: "/case-studies/SEO.jpg",
   },
   {
     id: "magic-upload",
@@ -30,6 +23,7 @@ const BASE: CaseStudyItem[] = [
       "Multimodal AI-powered inventory automation for e-commerce — 500K+ uploads at 94% accuracy, cutting manual effort by 60%.",
     href: "https://gamma.app/docs/Magic-Upload-4s3sh72jde8nwj2",
     accent: "#a78bfa",
+    image: "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=800&q=80",
   },
   {
     id: "fraud-risk-engine",
@@ -39,6 +33,7 @@ const BASE: CaseStudyItem[] = [
       "Built a 15+ signal behavioral risk scoring system that reduced fraud by 45%.",
     href: "https://gamma.app/docs/Fraud-Risk-Management-Engine-4y6hf6a2ygyfmun",
     accent: "#f87171",
+    image: "/case-studies/Fintech.jpg",
   },
 ];
 
@@ -123,7 +118,8 @@ export default function CaseStudies() {
       <div
         ref={containerRef}
         data-lenis-prevent
-        className="relative flex h-72 cursor-grab items-center justify-center overflow-hidden active:cursor-grabbing sm:h-80"
+        className="relative flex cursor-grab items-center justify-center overflow-hidden active:cursor-grabbing"
+        style={{ height: "clamp(340px, 52vw, 480px)" }}
         onTouchStart={onTouchStart}
         onTouchEnd={onTouchEnd}
       >
@@ -145,53 +141,10 @@ export default function CaseStudies() {
                 animate={{ x: `${xVw}vw`, scale, opacity }}
                 exit={{ scale: 0.2, opacity: 0, transition: { duration: 0.4, ease: "easeIn" } }}
                 transition={{ type: "spring", stiffness: 60, damping: 20 }}
-                className="absolute flex flex-col items-center text-center"
-                style={{ width: "min(440px, 85vw)" }}
+                className="absolute"
+                style={{ width: "min(420px, 88vw)" }}
               >
-                <a
-                  href={item.href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex flex-col items-center text-center"
-                  style={{ pointerEvents: showDetail ? "auto" : "none" }}
-                  tabIndex={showDetail ? 0 : -1}
-                >
-                  {/* Eyebrow */}
-                  <p
-                    className="mb-2 text-[10px] uppercase tracking-widest sm:text-xs"
-                    style={{ color: item.accent, fontFamily: "var(--font-mono)" }}
-                  >
-                    {item.eyebrow}
-                  </p>
-
-                  {/* Title */}
-                  <h4
-                    className="mb-3 text-2xl font-bold leading-tight text-[var(--text-primary)] sm:text-3xl md:text-4xl"
-                    style={{ fontFamily: "var(--font-display)" }}
-                  >
-                    {item.title}
-                  </h4>
-
-                  {/* Description + CTA — fade in/out */}
-                  <motion.div
-                    initial={false}
-                    animate={{ opacity: showDetail ? 1 : 0, y: showDetail ? 0 : 8 }}
-                    transition={{ duration: 0.4, ease: "easeOut" }}
-                  >
-                    <p
-                      className="mb-5 max-w-sm text-sm leading-relaxed text-[var(--text-secondary)] sm:text-base"
-                      style={{ fontFamily: "var(--font-body)" }}
-                    >
-                      {item.description}
-                    </p>
-                    <span
-                      className="text-sm font-semibold transition-all duration-200 hover:underline"
-                      style={{ color: item.accent, fontFamily: "var(--font-body)" }}
-                    >
-                      View case study →
-                    </span>
-                  </motion.div>
-                </a>
+                <CaseStudyCard item={item} showDetail={showDetail} />
               </motion.div>
             );
           })}
@@ -208,7 +161,8 @@ export default function CaseStudies() {
             className="h-1.5 rounded-full transition-all duration-300"
             style={{
               width: activeDot === i ? 24 : 8,
-              background: activeDot === i ? item.accent : "var(--text-dim)",
+              background: item.accent,
+              opacity: activeDot === i ? 1 : 0.3,
             }}
           />
         ))}
